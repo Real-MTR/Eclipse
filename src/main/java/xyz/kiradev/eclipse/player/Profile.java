@@ -11,9 +11,13 @@ package xyz.kiradev.eclipse.player;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import xyz.kiradev.eclipse.Eclipse;
+import xyz.kiradev.eclipse.util.C;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,11 +43,50 @@ public class Profile {
     public void saveOrCreate() {
         FileConfiguration config = Eclipse.getInstance().getProfilesFile().getConfiguration();
         String id = uuid.toString();
+        List<String> list = config.getStringList("profiles");
+        if(!list.contains(id)) list.add(id);
+        config.set("profiles", list);
         config.set(id + ".kills", kills);
         config.set(id + ".deaths", kills);
         config.set(id + ".streak", kills);
         config.set(id + ".best-streak", kills);
         config.set(id + ".in-ffa", inFFA);
+        Eclipse.getInstance().getProfilesFile().save();
         profiles.putIfAbsent(uuid, this);
+    }
+
+    public void loadProfile() {
+        FileConfiguration config = Eclipse.getInstance().getProfilesFile().getConfiguration();
+        String id = uuid.toString();
+        this.kills = config.getInt(id + ".kills");
+        this.deaths = config.getInt(id + ".deaths");
+        this.streak = config.getInt(id + ".streak");
+        this.bestStreak = config.getInt(id + ".best-streak");
+        this.inFFA = config.getBoolean(id + ".in-ffa");
+        profiles.putIfAbsent(uuid, this);
+    }
+
+    public void deleteProfile() {
+        FileConfiguration config = Eclipse.getInstance().getProfilesFile().getConfiguration();
+        String id = uuid.toString();
+        Player player = Bukkit.getPlayer(uuid);
+        if(player != null && player.isOnline()) {
+            player.kickPlayer(C.color("&cYour profile has been deleted. \n&cYou may relog now."));
+        }
+        config.set(id, null);
+        Eclipse.getInstance().getProfilesFile().save();
+    }
+
+    public static void init() {
+        FileConfiguration config = Eclipse.getInstance().getProfilesFile().getConfiguration();
+        for(String uuids : config.getStringList("profiles")) {
+            UUID uuid = UUID.fromString(uuids);
+            Profile profile = new Profile(uuid);
+            profile.loadProfile();
+        }
+    }
+
+    public static Profile getProfile(UUID uuid) {
+        return profiles.values().stream().filter(profile -> profile.getUuid().toString().equals(uuid.toString())).findFirst().orElse(null);
     }
 }
