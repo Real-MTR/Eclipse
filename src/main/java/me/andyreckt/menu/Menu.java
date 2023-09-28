@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.CraftingInventory;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -112,6 +113,9 @@ public abstract class Menu {
                 public ItemStack getButtonItem(Player player) {
                     return itemStack;
                 }
+
+                @Override
+                public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {}
             });
         });
     }
@@ -215,6 +219,9 @@ public abstract class Menu {
                 public ItemStack getButtonItem(Player player) {
                     return itemStack;
                 }
+
+                @Override
+                public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {}
             });
         });
     }

@@ -9,6 +9,7 @@ import me.andyreckt.menu.buttons.BackButton;
 import me.andyreckt.menu.buttons.Glass;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 /* loaded from: Sovereign-1.0.jar:me/andyreckt/menu/pagination/PaginatedMenu.class */
@@ -126,6 +127,9 @@ public abstract class PaginatedMenu extends Menu {
                 public ItemStack getButtonItem(Player player) {
                     return itemStack;
                 }
+
+                @Override
+                public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {}
             });
         });
     }

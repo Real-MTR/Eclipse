@@ -29,6 +29,9 @@ public class DisplayButton extends Button {
         return this.itemStack;
     }
 
+    @Override
+    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {}
+
     @Override // me.andyreckt.menu.Button
     public boolean shouldCancel(Player player, int slot, ClickType clickType) {
         return this.cancel;
