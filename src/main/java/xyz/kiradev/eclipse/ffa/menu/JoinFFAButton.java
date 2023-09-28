@@ -1,4 +1,4 @@
-package xyz.kiradev.eclipse.menu.main;
+package xyz.kiradev.eclipse.ffa.menu;
 
 /*
  *
@@ -16,7 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import xyz.kiradev.eclipse.menu.kits.KitsMenu;
+import xyz.kiradev.eclipse.kit.menu.KitsMenu;
 
 public class JoinFFAButton extends Button {
 

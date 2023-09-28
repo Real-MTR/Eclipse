@@ -11,7 +11,10 @@ package xyz.kiradev.eclipse.kit;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.andyreckt.menu.buttons.ItemBuilder;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import xyz.kiradev.eclipse.Eclipse;
 import xyz.kiradev.eclipse.util.InventoryUtil;
@@ -78,6 +81,16 @@ public class Kit {
             UUID uuid = UUID.fromString(uuids);
             Kit kit = new Kit(uuid, config.getString(uuid.toString() + ".name"));
             kit.loadKit();
+        }
+        if(getKitByName("Default") == null) {
+            Kit kit = new Kit(UUID.randomUUID(), "Default");
+            kit.setArmorContents(new ItemStack[]{
+                    new ItemBuilder(Material.IRON_HELMET).build(),
+                    new ItemBuilder(Material.IRON_CHESTPLATE).build(),
+                    new ItemBuilder(Material.IRON_LEGGINGS).build(),
+                    new ItemBuilder(Material.IRON_BOOTS).build()
+            });
+            kit.setInventoryContents(new ItemStack[]{new ItemBuilder(Material.DIAMOND_SWORD).build(), new ItemBuilder(Material.ENDER_PEARL).amount(16).build()});
         }
     }
 

@@ -9,7 +9,6 @@ package xyz.kiradev.eclipse.listener;
  *
  */
 
-import me.andyreckt.menu.buttons.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,7 +18,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
-import xyz.kiradev.eclipse.menu.main.FFAMenu;
+import xyz.kiradev.eclipse.ffa.menu.FFAMenu;
 import xyz.kiradev.eclipse.player.Profile;
 import xyz.kiradev.eclipse.util.C;
 import xyz.kiradev.eclipse.util.Items;

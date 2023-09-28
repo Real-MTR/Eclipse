@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import xyz.kiradev.eclipse.Eclipse;
 import xyz.kiradev.eclipse.util.C;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -30,6 +31,7 @@ public class Profile {
     private final UUID uuid;
     private int kills, deaths, streak, bestStreak, coins;
     private boolean inFFA;
+    private List<String> ownedKits;
 
     public Profile(UUID uuid) {
         this.uuid = uuid;
@@ -38,6 +40,7 @@ public class Profile {
         this.streak = 0;
         this.bestStreak = 0;
         this.inFFA = false;
+        this.ownedKits = new ArrayList<>();
     }
 
     public void saveOrCreate() {
@@ -52,6 +55,7 @@ public class Profile {
         config.set(id + ".best-streak", kills);
         config.set(id + ".coins", coins);
         config.set(id + ".in-ffa", inFFA);
+        config.set(id + ".owned-kits", ownedKits);
         Eclipse.getInstance().getProfilesFile().save();
         profiles.putIfAbsent(uuid, this);
     }
@@ -65,6 +69,7 @@ public class Profile {
         this.bestStreak = config.getInt(id + ".best-streak");
         this.coins = config.getInt(id + ".coins");
         this.inFFA = config.getBoolean(id + ".in-ffa");
+        this.ownedKits = config.getStringList(".owned-kits");
         profiles.putIfAbsent(uuid, this);
     }
 

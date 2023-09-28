@@ -1,4 +1,4 @@
-package xyz.kiradev.eclipse.menu.kits;
+package xyz.kiradev.eclipse.kit.menu;
 
 /*
  *
