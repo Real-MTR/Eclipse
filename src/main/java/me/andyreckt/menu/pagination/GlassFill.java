@@ -19,12 +19,11 @@ public class GlassFill extends Button {
     @Override // me.andyreckt.menu.Button
     public ItemStack getButtonItem(Player player) {
         ItemBuilder item = new ItemBuilder(Material.STAINED_GLASS_PANE);
-        item.durability((short) 7);
+        item.durability((short) 15);
         item.name(StringUtils.SPACE);
         return item.build();
     }
 
     @Override // me.andyreckt.menu.Button
-    public void clicked(Player player, int i, ClickType clickType, int hb) {
-    }
+    public void clicked(Player player, int i, ClickType clickType, int hb) {}
 }

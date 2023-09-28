@@ -22,6 +22,9 @@ public abstract class Button {
                 it.setItemMeta(meta);
                 return it;
             }
+
+            @Override
+            public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {}
         };
     }
 
@@ -41,8 +44,7 @@ public abstract class Button {
         player.playSound(player.getLocation(), buttonSound.getSound(), 20.0f, 1.0f);
     }
 
-    public void clicked(Player player, int slot, ClickType clickType, int hotbarButton) {
-    }
+    public abstract void clicked(Player player, int slot, ClickType clickType, int hotbarButton);
 
     public boolean shouldCancel(Player player, int slot, ClickType clickType) {
         return true;

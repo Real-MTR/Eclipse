@@ -1,4 +1,4 @@
-package xyz.kiradev.eclipse.menu;
+package xyz.kiradev.eclipse.listener;
 
 /*
  *
@@ -9,5 +9,5 @@ package xyz.kiradev.eclipse.menu;
  *
  */
 
-public class FFAMenu {
+public class GlobalListener {
 }

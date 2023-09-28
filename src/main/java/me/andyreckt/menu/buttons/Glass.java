@@ -9,10 +9,10 @@ import org.bukkit.inventory.ItemStack;
 
 /* loaded from: Sovereign-1.0.jar:me/andyreckt/menu/buttons/Glass.class */
 public class Glass extends Button {
-    private int data;
+    private final int data;
 
     public Glass() {
-        this.data = 7;
+        this.data = 15;
     }
 
     public Glass(int data) {
