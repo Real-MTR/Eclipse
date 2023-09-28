@@ -17,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 import xyz.kiradev.eclipse.menu.main.FFAMenu;
 import xyz.kiradev.eclipse.player.Profile;
@@ -57,5 +58,12 @@ public class ProfileListener implements Listener {
         if(event.getItem().isSimilar(Items.JOIN_FFA_ITEM.getItem())) {
             new FFAMenu().openMenu(player);
         }
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        Profile profile = Profile.getProfile(player.getUniqueId());
+        if(profile != null) profile.saveOrCreate();
     }
 }

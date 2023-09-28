@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 @Getter
 public enum Items {
-    JOIN_FFA_ITEM(Material.DIAMOND_SWORD, "&eJoin FFA", "Click to play FFA");
+    JOIN_FFA_ITEM(Material.DIAMOND_SWORD, "&eJoin FFA", "&7Click to play FFA");
 
     private final ItemStack item;
     private final Material material;

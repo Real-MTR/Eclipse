@@ -28,7 +28,7 @@ public class Profile {
     private static final Map<UUID, Profile> profiles = new ConcurrentHashMap<>();
 
     private final UUID uuid;
-    private int kills, deaths, streak, bestStreak;
+    private int kills, deaths, streak, bestStreak, coins;
     private boolean inFFA;
 
     public Profile(UUID uuid) {
@@ -50,6 +50,7 @@ public class Profile {
         config.set(id + ".deaths", kills);
         config.set(id + ".streak", kills);
         config.set(id + ".best-streak", kills);
+        config.set(id + ".coins", coins);
         config.set(id + ".in-ffa", inFFA);
         Eclipse.getInstance().getProfilesFile().save();
         profiles.putIfAbsent(uuid, this);
@@ -62,6 +63,7 @@ public class Profile {
         this.deaths = config.getInt(id + ".deaths");
         this.streak = config.getInt(id + ".streak");
         this.bestStreak = config.getInt(id + ".best-streak");
+        this.coins = config.getInt(id + ".coins");
         this.inFFA = config.getBoolean(id + ".in-ffa");
         profiles.putIfAbsent(uuid, this);
     }
@@ -75,6 +77,7 @@ public class Profile {
         }
         config.set(id, null);
         Eclipse.getInstance().getProfilesFile().save();
+        profiles.remove(uuid);
     }
 
     public static void init() {
