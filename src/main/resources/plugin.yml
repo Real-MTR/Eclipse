@@ -1,0 +1,5 @@
+name: Eclipse
+version: '${project.version}'
+main: xyz.kiradev.eclipse.Eclipse
+description: An open-source FFA plugin
+author: Kira Development Team
